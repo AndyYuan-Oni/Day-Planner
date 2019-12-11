@@ -1,8 +1,16 @@
 $(document).ready(function() {
     var now = moment();
     var currentHour = now.hour();
-
     var hour = $(".container").find("textarea");
+
+    var count = setInterval(timeDispaly, 1000);
+
+    function timeDispaly() {
+        var currentDate = moment().format('MMMM Do YYYY, h:mm:ss a');
+        $("#currentDay").text(currentDate);
+    }
+
+
     for (var i = 0; i < 9; i++) {
         var tName = parseInt(hour[i].name);
         var textTag = $(hour[i]);

@@ -11,6 +11,6 @@ This application is a simple calinder for user to plan work daily. It can store 
 -Saved content can be changed.
 
 
-![Image of user interface]( https://andyyuan-oni.github.io/Password-Generator/assets/Dayplanner.png)
+![Image of user interface]( https://andyyuan-oni.github.io/Day-Planner/assets/Dayplanner.png)
 
  Have a try: https://andyyuan-oni.github.io/Day-Planner/

@@ -1,7 +1,7 @@
 $(document).ready(function() {
     var now = moment();
     var currentHour = now.hour();
-    console.log(currentHour);
+
     var hour = $(".container").find("textarea");
     for (var i = 0; i < 9; i++) {
         var tName = parseInt(hour[i].name);
@@ -20,38 +20,57 @@ $(document).ready(function() {
 
     };
 
-    function storeTextarea() {
-        var input = $($(this).parent().children("textarea"));
-        var newName = $($(this).parent().children("textarea")).name;
+
+    function display() {
+        $("textarea").empty();
+        var display = JSON.parse(localStorage.getItem("notes"));
+
+        var timeBar = $(".row").children("textarea");
+
+        if (display == null) {
+
+        } else {
+            for (var i = 0; i < display.length; i++) {
+                var noteElement = display[i][0];
+
+                for (var j = 0; j < timeBar.length; j++) {
+
+                    if (noteElement.name == $(timeBar[j]).attr("name")) {
+                        $(timeBar[j]).text(noteElement.notes);
+                    }
+                }
+
+            }
+        }
+
+
+    }
+
+    $(".saveBtn").on("click", function() {
+        var currentTag = $(this).prev();
+        var input = currentTag.val();
+
+        var lineName = currentTag.attr("name");
+
         var newInput = [{
-            "name": newName,
-            "saved": input
+            "name": lineName,
+            "notes": input
         }];
 
         var notes = JSON.parse(localStorage.getItem("notes"));
 
         if (notes == null) {
             notes = [newInput];
-            notes.setItem("notes", JSON.stringify(notes));
+            localStorage.setItem("notes", JSON.stringify(notes));
         } else {
             notes.push(newInput);
             localStorage.setItem("notes", JSON.stringify(notes));
         }
+    });
 
-    }
-
-    function display() {
-        $("textarea").empty();
-        $(this).parent.children("textarea").text()
-    }
-
-    $(".saveBtn").on("click", function() {
-        storeTextarea();
-
-    })
-    $(".container").on("load", function() {
+    $(window).on("load", function() {
         display();
-    })
+    });
 
 
 });

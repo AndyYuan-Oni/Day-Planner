@@ -34,7 +34,6 @@ $(document).ready(function() {
         if (display != null) {
             for (var i = 0; i < display.length; i++) {
                 var noteElement = display[i][0];
-
                 for (var j = 0; j < timeBar.length; j++) {
                     if (noteElement.name == $(timeBar[j]).attr("name")) {
                         $(timeBar[j]).text(noteElement.notes);
@@ -66,9 +65,9 @@ $(document).ready(function() {
         }
     });
 
-    $(window).on("load", function() {
-        display();
-    });
+
+    display();
+
 
 
 });

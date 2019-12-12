@@ -45,7 +45,7 @@ $(document).ready(function() {
     }
 
     $(".saveBtn").on("click", function() {
-        var currentTag = $(this).prev();
+        var currentTag = $(this).siblings(".form-control");
         var input = currentTag.val();
 
         var lineName = currentTag.attr("name");

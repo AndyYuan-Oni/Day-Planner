@@ -17,41 +17,31 @@ $(document).ready(function() {
 
         if (currentHour == tName) {
             textTag.addClass("present");
-        } //
-        else if (currentHour > tName) {
+        } else if (currentHour > tName) {
             textTag.addClass("past");
             textTag.attr("readonly", true);
-        } //
-        else if (currentHour < tName) {
+        } else if (currentHour < tName) {
             textTag.addClass("future");
         }
-
     };
 
 
     function display() {
         $("textarea").empty();
         var display = JSON.parse(localStorage.getItem("notes"));
-
         var timeBar = $(".row").children("textarea");
 
-        if (display == null) {
-
-        } else {
+        if (display != null) {
             for (var i = 0; i < display.length; i++) {
                 var noteElement = display[i][0];
 
                 for (var j = 0; j < timeBar.length; j++) {
-
                     if (noteElement.name == $(timeBar[j]).attr("name")) {
                         $(timeBar[j]).text(noteElement.notes);
                     }
                 }
-
             }
         }
-
-
     }
 
     $(".saveBtn").on("click", function() {
